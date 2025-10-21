@@ -1,6 +1,8 @@
 Automated Deployment Script
+
 Overview
 A production-grade Bash script that automates the complete deployment lifecycle of Dockerized applications on remote Linux servers. This script handles everything from repository cloning to container deployment and Nginx reverse proxy configuration.
+
 Features
 ✅ Comprehensive Input Validation - Validates URLs, IP addresses, ports, and file paths
 ✅ Error Handling - Robust error handling with meaningful exit codes
@@ -11,31 +13,27 @@ Features
 ✅ SSH Connectivity Checks - Validates connection before deployment
 ✅ Cleanup Mode - Easy removal of deployed resources
 ✅ Color-Coded Output - Easy-to-read terminal output
+
 Prerequisites
-Local Machine
-
-Bash 4.0 or higher
-Git
-SSH client
-rsync
-
-Remote Server
-
-Linux-based OS (Ubuntu/Debian recommended)
-SSH access with key-based authentication
-Sudo privileges for the user
-Open ports: 22 (SSH), 80 (HTTP), and your application port
+> Local Machine
+> Bash 4.0 or higher
+> Git
+> SSH client
+> rsync
+> Remote Server
+> Linux-based OS (Ubuntu/Debian recommended)
+> SSH access with key-based authentication
+> Sudo privileges for the user
+> Open ports: 22 (SSH), 80 (HTTP), and your application port
 
 Installation
+> Clone this repository:
+bash git clone https://github.com/ceo180/Automated-Deployment-Bash-Script.git
+cd Automated-Deployment-Bash-Script
 
-Clone this repository:
+> Make the script executable:
+bash chmod +x deploy.sh
 
-bashgit clone https://github.com/yourusername/hng13-stage1-devops.git
-cd hng13-stage1-devops
-
-Make the script executable:
-
-bashchmod +x deploy.sh
 Usage
 Standard Deployment
 Run the script:
@@ -54,27 +52,24 @@ Cleanup Mode
 To remove all deployed resources:
 bash./deploy.sh --cleanup
 Script Workflow
-1. Parameter Collection
 
+1. Parameter Collection
 Validates all user inputs
 Ensures proper formatting of URLs, IPs, and ports
 Securely handles Personal Access Token
 
 2. Repository Management
-
 Clones the Git repository using PAT authentication
 Pulls latest changes if repository already exists
 Switches to specified branch
 Validates presence of Dockerfile or docker-compose.yml
 
 3. SSH Connection
-
 Tests SSH connectivity before deployment
 Uses key-based authentication
 Validates server accessibility
 
 4. Remote Environment Setup
-
 Updates system packages
 Installs Docker and Docker Compose
 Installs and configures Nginx
@@ -89,14 +84,12 @@ Builds Docker image or runs docker-compose
 Validates container health
 
 6. Nginx Configuration
-
 Creates reverse proxy configuration
 Forwards port 80 to application port
 Tests and reloads Nginx
 Removes default Nginx site
 
 7. Validation
-
 Checks Docker service status
 Verifies container is running
 Tests Nginx status
